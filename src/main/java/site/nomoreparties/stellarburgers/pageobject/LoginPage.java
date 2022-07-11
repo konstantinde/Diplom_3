@@ -26,7 +26,6 @@ public class LoginPage extends BasePage {
     @FindBy(how = How.LINK_TEXT, using = "Восстановить пароль")
     private SelenideElement linkRecoverPassword;
 
-
     public void setEmail(String email) {
         inputEmail.setValue(email);
     }
@@ -45,7 +44,6 @@ public class LoginPage extends BasePage {
         homePage.waitForLoadHomePageAfterLogin();
         return homePage;
     }
-
 
     public boolean isVisibleEnterHeader(){
         return textHeaderEnter.shouldBe(visible).isDisplayed();

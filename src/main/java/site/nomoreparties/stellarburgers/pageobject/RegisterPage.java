@@ -27,6 +27,9 @@ public class RegisterPage extends BasePage{
     @FindBy(how = How.XPATH, using = "//p[text()='Некорректный пароль']")
     private SelenideElement textWrongPassword;
 
+    @FindBy(how = How.LINK_TEXT, using = "Войти")
+    private SelenideElement linkButtonLogin;
+
     public void setName(String name) {
         inputName.setValue(name);
     }
@@ -52,6 +55,13 @@ public class RegisterPage extends BasePage{
         setEmail(email);
         setPassword(password);
         clickRegistrationButton();
+        LoginPage loginPage = page(LoginPage.class);
+        loginPage.waitForLoadLoginPage();
+        return loginPage;
+    }
+
+    public LoginPage clickLinkButtonLogin() {
+        linkButtonLogin.click();
         LoginPage loginPage = page(LoginPage.class);
         loginPage.waitForLoadLoginPage();
         return loginPage;
