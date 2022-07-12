@@ -11,18 +11,23 @@ public class LoginPage extends BasePage {
 
     public static final String URL = "https://stellarburgers.nomoreparties.site/login";
 
+    // Кнопка Войти
     @FindBy(how = How.XPATH, using = "//button[text()='Войти']")
     private SelenideElement buttonEnter;
 
+    // Подзаголовок Вход
     @FindBy(how = How.XPATH, using = "//h2[text()='Вход']")
     private SelenideElement textEnter;
 
+    // Поле ввода почты
     @FindBy(how = How.XPATH, using = "//label[text()='Email']/following-sibling::input")
     private SelenideElement inputEmail;
 
+    // Поле ввода пароля
     @FindBy(how = How.XPATH, using = "//label[text()='Пароль']/following-sibling::input")
     private SelenideElement inputPassword;
 
+    // Ссылка Восстановить пароль
     @FindBy(how = How.LINK_TEXT, using = "Восстановить пароль")
     private SelenideElement linkRecoverPassword;
 

@@ -12,21 +12,27 @@ public class RegisterPage extends BasePage{
 
     public static final String URL = "https://stellarburgers.nomoreparties.site/register";
 
+    // Ссылка Зарегистрироваться
     @FindBy(how = How.XPATH, using = "//button[text()='Зарегистрироваться']")
     private SelenideElement buttonRegistration;
 
+    // Поле ввода имени
     @FindBy(how = How.XPATH, using = "//label[text()='Имя']/following-sibling::input")
     private SelenideElement inputName;
 
+    // Поле ввода почты
     @FindBy(how = How.XPATH, using = "//label[text()='Email']/following-sibling::input")
     private SelenideElement inputEmail;
 
+    // Поле ввода пароля
     @FindBy(how = How.XPATH, using = "//label[text()='Пароль']/following-sibling::input")
     private SelenideElement inputPassword;
 
+    // Алерт Некорректный пароль
     @FindBy(how = How.XPATH, using = "//p[text()='Некорректный пароль']")
     private SelenideElement textWrongPassword;
 
+    // Ссылка Войти
     @FindBy(how = How.LINK_TEXT, using = "Войти")
     private SelenideElement linkButtonLogin;
 

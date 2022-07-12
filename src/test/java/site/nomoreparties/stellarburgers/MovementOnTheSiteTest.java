@@ -1,5 +1,7 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.After;
@@ -46,6 +48,8 @@ public class MovementOnTheSiteTest {
         userClient.delete(bearerToken);
     }
 
+    @DisplayName("Переход в личный кабинет")
+    @Description("Проверяем, что после логина при нажатии на Личный кабинет - переходим в личный кабинет")
     @Test
     public void shouldOpenAccountProfileAfterClickPersonalAreaAfterLogin() {
         LoginPage loginPage = open(LoginPage.URL, LoginPage.class);
@@ -59,6 +63,8 @@ public class MovementOnTheSiteTest {
         softAssertions.assertAll();
     }
 
+    @DisplayName("Переход в конструктор из ЛК")
+    @Description("Проверяем, что из личного кабинета можно перейти в конструктор")
     @Test
     public void shouldOpenConstructorFromPersonalArea() {
         LoginPage loginPage = open(LoginPage.URL, LoginPage.class);
@@ -73,6 +79,8 @@ public class MovementOnTheSiteTest {
         softAssertions.assertAll();
     }
 
+    @DisplayName("Клик по банеру из ЛК")
+    @Description("Проверяем, что при клике по банеру из ЛК переходим на главную страницу")
     @Test
     public void shouldOpenHomePageOnClickSiteBanner() {
         LoginPage loginPage = open(LoginPage.URL, LoginPage.class);
@@ -87,6 +95,8 @@ public class MovementOnTheSiteTest {
         softAssertions.assertAll();
     }
 
+    @DisplayName("Выход из ЛК")
+    @Description("Проверяем, что работает кнопка Выход из ЛК")
     @Test
     public void shouldExitFromAccount() {
         LoginPage loginPage = open(LoginPage.URL, LoginPage.class);

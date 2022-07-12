@@ -10,6 +10,7 @@ public class ForgotPassword {
 
     public static final String URL = "https://stellarburgers.nomoreparties.site/forgot-password";
 
+    // Кнопка Войти
     @FindBy(how = How.LINK_TEXT, using = "Войти")
     private SelenideElement linkButtonLogin;
 

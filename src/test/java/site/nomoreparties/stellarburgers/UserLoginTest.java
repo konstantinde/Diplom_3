@@ -1,5 +1,7 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.After;
@@ -47,6 +49,9 @@ public class UserLoginTest {
         userClient.delete(bearerToken);
     }
 
+    @DisplayName("Логин по кнопке Войти в аккаунт на главной")
+    @Description("Проверяем, что попадаем на страницу логина по кнопке Войти в аккаунт на главной странице и можно" +
+            "успешно залогиниться")
     @Test
     public void shouldLoginByEnterInAccountButton() {
         HomePage homePage = open(HomePage.URL, HomePage.class);
@@ -56,6 +61,9 @@ public class UserLoginTest {
         softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
     }
 
+    @DisplayName("Логин через кнопку Личный кабинет")
+    @Description("Проверяем, что попадаем на страницу логина через кнопку Личный кабинет в хедере и можно" +
+            "успешно залогиниться")
     @Test
     public void shouldLoginByPersonalAccountButton() {
         HomePage homePage = open(HomePage.URL, HomePage.class);
@@ -65,6 +73,9 @@ public class UserLoginTest {
         softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
     }
 
+    @DisplayName("Логин через кнопку в форме регистрации")
+    @Description("Проверяем, что попадаем на страницу логина через ссылку Войти на форме регистрации и можно" +
+            "успешно залогиниться")
     @Test
     public void shouldLoginByButtonFromRegistrationForm() {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
@@ -74,6 +85,9 @@ public class UserLoginTest {
         softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
     }
 
+    @DisplayName("Логин через кнопку в форме восстановления пароля")
+    @Description("Проверяем, что попадаем на страницу логина через ссылку Восстановить пароль на странице " +
+            "восстановления пароля и можно успешно залогиниться")
     @Test
     public void shouldLoginByButtonFromForgotPasswordForm() {
         ForgotPassword forgotPassword = open(ForgotPassword.URL, ForgotPassword.class);

@@ -1,5 +1,7 @@
 package site.nomoreparties.stellarburgers;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.After;
@@ -45,6 +47,8 @@ public class UserRegistrationTest {
         }
     }
 
+    @DisplayName("Успешная регистрация")
+    @Description("Проверяем, что просиходит успешная регистрация при заполнении полей валидными данными")
     @Test
     public void shouldSuccessRegistration() {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
@@ -55,6 +59,8 @@ public class UserRegistrationTest {
         softAssertions.assertAll();
     }
 
+    @DisplayName("Короткий пароль")
+    @Description("Проверяем, что появится алерт, если введён пароль короче 6 символов")
     @Test
     public void shouldNotRegistrationWithWrongPassword() {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);

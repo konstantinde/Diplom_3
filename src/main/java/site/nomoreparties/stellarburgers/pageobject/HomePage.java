@@ -31,7 +31,7 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//div/span[text()='Соусы']")
     private SelenideElement frameButtonSauce;
 
-    // Кнопка Нчинки во фрейме
+    // Кнопка Начинки во фрейме
     @FindBy(how = How.XPATH, using = "//div/span[text()='Начинки']")
     private SelenideElement frameButtonFilling;
 

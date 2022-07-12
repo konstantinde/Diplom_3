@@ -11,15 +11,19 @@ public class AccountProfilePage extends BasePage{
 
     public static final String URL = "https://stellarburgers.nomoreparties.site/account/profile";
 
+    // Пояснительный текст в профиле ЛК
     @FindBy(how = How.XPATH, using = "//p[text()='В этом разделе вы можете изменить свои персональные данные']")
     private SelenideElement textAboutChapter;
 
+    // Кнопка Выход
     @FindBy(how = How.XPATH, using = "//button[text()='Выход']")
     private SelenideElement linkButtonExit;
 
+    // Кнопка Профиль
     @FindBy(how = How.LINK_TEXT, using = "Профиль")
     private SelenideElement linkButtonProfile;
 
+    // Кнопка История заказов
     @FindBy(how = How.LINK_TEXT, using = "История заказов")
     private SelenideElement linkButtonOrderStory;
 
