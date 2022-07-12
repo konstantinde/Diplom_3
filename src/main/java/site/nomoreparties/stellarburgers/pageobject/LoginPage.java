@@ -1,6 +1,7 @@
 package site.nomoreparties.stellarburgers.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -31,18 +32,17 @@ public class LoginPage extends BasePage {
     @FindBy(how = How.LINK_TEXT, using = "Восстановить пароль")
     private SelenideElement linkRecoverPassword;
 
+    @Step("Заполнили поле Email")
     public void setEmail(String email) {
         inputEmail.setValue(email);
     }
 
+    @Step("Заполнили поле Пароль")
     public void setPassword(String password) {
         inputPassword.setValue(password);
     }
 
-    public String getInputEmail() {
-        return inputEmail.scrollTo().getText();
-    }
-
+    @Step("Заполняем поля почты/пароля на странице логина")
     public HomePage makeUserLogin(String email, String password) {
         setEmail(email);
         setPassword(password);
@@ -60,7 +60,7 @@ public class LoginPage extends BasePage {
         return buttonEnter.shouldBe(visible).isDisplayed();
     }
 
-    // метод ожидания загрузки страницы
+    @Step("Загрузка страницы логина")
     public void waitForLoadLoginPage(){
         linkRecoverPassword.shouldBe(visible);
     }

@@ -1,6 +1,7 @@
 package site.nomoreparties.stellarburgers.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -18,6 +19,7 @@ public class FeedPage extends BasePage{
     @FindBy(how = How.XPATH, using = "//div/p[text()='Выполнено за сегодня']")
     private SelenideElement textCompletedToday;
 
+    @Step("Загрузка страницы Лента заказов")
     public void waitForFeedPage() {
         textCompletedToday.shouldBe(visible);
     }

@@ -1,6 +1,7 @@
 package site.nomoreparties.stellarburgers.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -47,22 +48,22 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//h2[text()='Начинки']")
     private SelenideElement frameTextFilling;
 
-    public boolean isVisibleEnterInAccountButton() {
-        return buttonEnterInAccount.shouldBe(visible).isDisplayed();
-    }
 
     public boolean isVisibleCreateOrderButton() {
         return buttonCreateOrder.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Загрузка главной страницы после логина")
     public void waitForLoadHomePageAfterLogin() {
         buttonCreateOrder.shouldBe(visible);
     }
 
+    @Step("Загрузка Главной страницы до логина")
     public void waitForLoadHomePage() {
         buttonEnterInAccount.shouldBe(visible);
     }
 
+    @Step("Нажали на кнопку Войти в аккаунт на главной странице")
     public LoginPage clickEnterInAccountButton() {
         buttonEnterInAccount.click();
         LoginPage loginPage = page(LoginPage.class);
@@ -74,14 +75,17 @@ public class HomePage extends BasePage {
         return textCollectBurger.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Нажали на кнопку Булки во фрейме")
     public void clickFrameButtonBun() {
         frameButtonBun.click();
     }
 
+    @Step("Нажали на кнопку Соусы во фрейме")
     public void clickFrameButtonSauce() {
         frameButtonSauce.click();
     }
 
+    @Step("Нажали на кнопку Начинки во фрейме")
     public void clickFrameButtonFilling() {
         frameButtonFilling.click();
     }

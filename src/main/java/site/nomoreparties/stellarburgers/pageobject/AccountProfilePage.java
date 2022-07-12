@@ -1,6 +1,7 @@
 package site.nomoreparties.stellarburgers.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -27,7 +28,7 @@ public class AccountProfilePage extends BasePage{
     @FindBy(how = How.LINK_TEXT, using = "История заказов")
     private SelenideElement linkButtonOrderStory;
 
-
+    @Step("Загрузка страницы Профиль пользователя в ЛК")
     public void waitForAccountProfilePage() {
         textAboutChapter.shouldBe(visible);
     }
@@ -48,6 +49,7 @@ public class AccountProfilePage extends BasePage{
         return textAboutChapter.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Нажали на кнопку Конструктор из Профиля ЛК")
     public HomePage clickConstructorButtonFromPersonalArea() {
         clickConstructorButton();
         HomePage homePage = page(HomePage.class);
@@ -55,6 +57,7 @@ public class AccountProfilePage extends BasePage{
         return homePage;
     }
 
+    @Step("Нажали на кнопку Выход")
     public void clickExitLinkButton() {
         linkButtonExit.click();
     }

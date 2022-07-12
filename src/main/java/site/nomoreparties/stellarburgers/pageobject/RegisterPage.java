@@ -2,6 +2,7 @@ package site.nomoreparties.stellarburgers.pageobject;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
@@ -36,18 +37,22 @@ public class RegisterPage extends BasePage{
     @FindBy(how = How.LINK_TEXT, using = "Войти")
     private SelenideElement linkButtonLogin;
 
+    @Step("Заполнили поле имя")
     public void setName(String name) {
         inputName.setValue(name);
     }
 
+    @Step("Заполнили поле Email")
     public void setEmail(String email) {
         inputEmail.setValue(email);
     }
 
+    @Step("Заполнили поле Пароль")
     public void setPassword(String password) {
         inputPassword.setValue(password);
     }
 
+    @Step("Нажали на кнопку Регистрация")
     public void clickRegistrationButton() {
         buttonRegistration.click();
     }
@@ -56,6 +61,7 @@ public class RegisterPage extends BasePage{
         return textWrongPassword.shouldBe(visible).isDisplayed();
     }
 
+    @Step("Запонляем форму регистрации")
     public LoginPage makeUserRegistration(String name, String email, String password) {
         setName(name);
         setEmail(email);
@@ -66,6 +72,7 @@ public class RegisterPage extends BasePage{
         return loginPage;
     }
 
+    @Step("Вводим почту/пароль и жмем Вход")
     public LoginPage clickLinkButtonLogin() {
         linkButtonLogin.click();
         LoginPage loginPage = page(LoginPage.class);
