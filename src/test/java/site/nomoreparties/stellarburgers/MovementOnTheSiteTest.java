@@ -74,6 +74,20 @@ public class MovementOnTheSiteTest {
     }
 
     @Test
+    public void shouldOpenHomePageOnClickSiteBanner() {
+        LoginPage loginPage = open(LoginPage.URL, LoginPage.class);
+        HomePage homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
+        AccountProfilePage accountProfilePage = homePage.clickPersonalAreaButtonAfterLogin();
+        accountProfilePage.waitForAccountProfilePage();
+        homePage.clickHeaderBanner();
+        homePage.waitForLoadHomePageAfterLogin();
+
+        softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
+        softAssertions.assertThat(homePage.isVisibleCollectBurgerText()).isTrue();
+        softAssertions.assertAll();
+    }
+
+    @Test
     public void shouldExitFromAccount() {
         LoginPage loginPage = open(LoginPage.URL, LoginPage.class);
         HomePage homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
