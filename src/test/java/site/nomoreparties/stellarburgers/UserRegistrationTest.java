@@ -50,7 +50,7 @@ public class UserRegistrationTest {
         RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
         LoginPage loginPage = registerPage.makeUserRegistration(user.getName(), user.getEmail(), user.getPassword());
 
-        softAssertions.assertThat(loginPage.isVisibleEnterHeader()).isTrue();
+        softAssertions.assertThat(loginPage.isVisibleEnterText()).isTrue();
         softAssertions.assertThat(loginPage.isVisibleEnterButton()).isTrue();
         softAssertions.assertAll();
     }

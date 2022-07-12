@@ -8,15 +8,14 @@ import org.junit.Test;
 import site.nomoreparties.stellarburgers.apiclients.UserClient;
 import site.nomoreparties.stellarburgers.helpers.UserGenerator;
 import site.nomoreparties.stellarburgers.models.users.User;
-import site.nomoreparties.stellarburgers.pageobject.ForgotPassword;
+import site.nomoreparties.stellarburgers.pageobject.AccountProfilePage;
 import site.nomoreparties.stellarburgers.pageobject.HomePage;
 import site.nomoreparties.stellarburgers.pageobject.LoginPage;
-import site.nomoreparties.stellarburgers.pageobject.RegisterPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
-public class UserLoginTest {
+public class MovementOnTheSiteTest {
 
     SoftAssertions softAssertions = new SoftAssertions();
     UserClient userClient = new UserClient();
@@ -48,38 +47,42 @@ public class UserLoginTest {
     }
 
     @Test
-    public void shouldLoginByEnterInAccountButton() {
-        HomePage homePage = open(HomePage.URL, HomePage.class);
-        LoginPage loginPage = homePage.clickEnterInAccountButton();
-        homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
-
-        softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
-    }
-
-    @Test
-    public void shouldLoginByPersonalAccountButton() {
-        HomePage homePage = open(HomePage.URL, HomePage.class);
-        LoginPage loginPage = homePage.clickPersonalAreaButtonBeforeLogin();
-        homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
-
-        softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
-    }
-
-    @Test
-    public void shouldLoginByButtonFromRegistrationForm() {
-        RegisterPage registerPage = open(RegisterPage.URL, RegisterPage.class);
-        LoginPage loginPage = registerPage.clickLinkButtonLogin();
+    public void shouldOpenAccountProfileAfterClickPersonalAreaAfterLogin() {
+        LoginPage loginPage = open(LoginPage.URL, LoginPage.class);
         HomePage homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
+        AccountProfilePage accountProfilePage = homePage.clickPersonalAreaButtonAfterLogin();
 
-        softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
+        softAssertions.assertThat(accountProfilePage.isVisibleProfileLinkButton()).isTrue();
+        softAssertions.assertThat(accountProfilePage.isVisibleOrderStoryLinkButton()).isTrue();
+        softAssertions.assertThat(accountProfilePage.isVisibleExitLinkButton()).isTrue();
+        softAssertions.assertThat(accountProfilePage.isVisibleAboutChapterText()).isTrue();
+        softAssertions.assertAll();
     }
 
     @Test
-    public void shouldLoginByButtonFromForgotPasswordForm() {
-        ForgotPassword forgotPassword = open(ForgotPassword.URL, ForgotPassword.class);
-        LoginPage loginPage = forgotPassword.clickLinkButtonLogin();
+    public void shouldOpenConstructorFromPersonalArea() {
+        LoginPage loginPage = open(LoginPage.URL, LoginPage.class);
         HomePage homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
+        AccountProfilePage accountProfilePage = homePage.clickPersonalAreaButtonAfterLogin();
+        accountProfilePage.waitForAccountProfilePage();
+        homePage.clickConstructorButton();
+        homePage.waitForLoadHomePageAfterLogin();
 
         softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
+        softAssertions.assertThat(homePage.isVisibleCollectBurgerText()).isTrue();
+        softAssertions.assertAll();
+    }
+
+    @Test
+    public void shouldExitFromAccount() {
+        LoginPage loginPage = open(LoginPage.URL, LoginPage.class);
+        HomePage homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
+        AccountProfilePage accountProfilePage = homePage.clickPersonalAreaButtonAfterLogin();
+        accountProfilePage.clickExitLinkButton();
+        loginPage.waitForLoadLoginPage();
+
+        softAssertions.assertThat(loginPage.isVisibleEnterText()).isTrue();
+        softAssertions.assertThat(loginPage.isVisibleEnterButton()).isTrue();
+        softAssertions.assertAll();
     }
 }

@@ -17,8 +17,9 @@ public class HomePage extends BasePage {
     @FindBy(how = How.XPATH, using = "//button[text()='Оформить заказ']")
     private SelenideElement buttonCreateOrder;
 
-    @FindBy(how = How.XPATH, using = "//a[@href='/account']")
-    private SelenideElement buttonPersonalArea;
+    @FindBy(how = How.XPATH, using = "//h1[text()='Соберите бургер']")
+    private SelenideElement textCollectBurger;
+
 
     public boolean isVisibleEnterInAccountButton() {
         return buttonEnterInAccount.shouldBe(visible).isDisplayed();
@@ -43,11 +44,9 @@ public class HomePage extends BasePage {
         return loginPage;
     }
 
-    public LoginPage clickPersonalAreaButton() {
-        buttonPersonalArea.click();
-        LoginPage loginPage = page(LoginPage.class);
-        loginPage.waitForLoadLoginPage();
-        return loginPage;
+    public boolean isVisibleCollectBurgerText() {
+        return textCollectBurger.shouldBe(visible).isDisplayed();
     }
+
 
 }

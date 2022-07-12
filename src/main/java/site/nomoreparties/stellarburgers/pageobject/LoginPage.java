@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
     private SelenideElement buttonEnter;
 
     @FindBy(how = How.XPATH, using = "//h2[text()='Вход']")
-    private SelenideElement textHeaderEnter;
+    private SelenideElement textEnter;
 
     @FindBy(how = How.XPATH, using = "//label[text()='Email']/following-sibling::input")
     private SelenideElement inputEmail;
@@ -38,15 +38,17 @@ public class LoginPage extends BasePage {
         return inputEmail.scrollTo().getText();
     }
 
-    public HomePage clickLoginButton() {
+    public HomePage makeUserLogin(String email, String password) {
+        setEmail(email);
+        setPassword(password);
         buttonEnter.click();
         HomePage homePage = page(HomePage.class);
         homePage.waitForLoadHomePageAfterLogin();
         return homePage;
     }
 
-    public boolean isVisibleEnterHeader(){
-        return textHeaderEnter.shouldBe(visible).isDisplayed();
+    public boolean isVisibleEnterText(){
+        return textEnter.shouldBe(visible).isDisplayed();
     }
 
     public boolean isVisibleEnterButton(){
