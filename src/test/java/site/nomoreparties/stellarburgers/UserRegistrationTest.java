@@ -15,7 +15,6 @@ import site.nomoreparties.stellarburgers.pageobject.RegisterPage;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
 
 public class UserRegistrationTest {
 
@@ -71,6 +70,7 @@ public class UserRegistrationTest {
         registerPage.clickRegistrationButton();
 
         softAssertions.assertThat(registerPage.isVisibleTextWrongPassword()).isTrue();
+        softAssertions.assertAll();
     }
 
 }
