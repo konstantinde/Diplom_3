@@ -59,6 +59,7 @@ public class UserLoginTest {
         homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
 
         softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
+        softAssertions.assertAll();
     }
 
     @DisplayName("Логин через кнопку Личный кабинет")
@@ -71,6 +72,7 @@ public class UserLoginTest {
         homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
 
         softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
+        softAssertions.assertAll();
     }
 
     @DisplayName("Логин через кнопку в форме регистрации")
@@ -83,6 +85,7 @@ public class UserLoginTest {
         HomePage homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
 
         softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
+        softAssertions.assertAll();
     }
 
     @DisplayName("Логин через кнопку в форме восстановления пароля")
@@ -95,5 +98,6 @@ public class UserLoginTest {
         HomePage homePage = loginPage.makeUserLogin(user.getEmail(), user.getPassword());
 
         softAssertions.assertThat(homePage.isVisibleCreateOrderButton()).isTrue();
+        softAssertions.assertAll();
     }
 }
